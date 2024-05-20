@@ -1,5 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   name: MyString
   year: 1
@@ -9,3 +7,15 @@ two:
   name: MyString
   year: 1
   user: two
+
+# == Schema Information
+#
+# Table name: albums
+#
+#  id                :bigint           not null, primary key
+#  last_purchased_at :datetime
+#  name              :string
+#  year              :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#

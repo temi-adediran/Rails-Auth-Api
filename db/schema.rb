@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_23_122809) do
+ActiveRecord::Schema.define(version: 2024_04_24_006335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,18 @@ ActiveRecord::Schema.define(version: 2024_04_23_122809) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.integer "year"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_albums_on_user_id"
+    t.datetime "last_purchased_at"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "album_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_purchases_on_album_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,5 +41,6 @@ ActiveRecord::Schema.define(version: 2024_04_23_122809) do
     t.text "token"
   end
 
-  add_foreign_key "albums", "users"
+  add_foreign_key "purchases", "albums"
+  add_foreign_key "purchases", "users"
 end

@@ -1,0 +1,20 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  album: one
+
+two:
+  user: two
+  album: two
+
+# == Schema Information
+#
+# Table name: purchases
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  album_id   :bigint           not null
+#  user_id    :bigint           not null
+#
